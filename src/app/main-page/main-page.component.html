@@ -1,0 +1,155 @@
+<div class="main-page">
+  <!-- Header Section -->
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="logo-container">
+        <img src="assets/images/health-logo.svg" alt="Health Analysis Logo" class="main-logo">
+      </div>
+      <h1 class="hero-title">Centro de Análisis de Salud</h1>
+      <p class="hero-subtitle">
+        Herramientas inteligentes para el monitoreo y análisis de tu salud
+      </p>
+      <div class="hero-features">
+        <div class="feature-item">
+          <span class="feature-icon">🔬</span>
+          <span>Análisis con IA</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📊</span>
+          <span>Resultados Detallados</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🏥</span>
+          <span>Recomendaciones Médicas</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-container">
+      <h2 class="section-title">Selecciona el Tipo de Análisis</h2>
+      <p class="section-description">
+        Elige la herramienta de análisis que necesitas para obtener información personalizada sobre tu salud
+      </p>
+
+      <!-- Analysis Options -->
+      <div class="analysis-options">
+
+        <!-- Blood Sugar Analysis Card -->
+        <div class="analysis-card blood-sugar-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <img src="assets/images/glucose-icon.svg" alt="Glucosa" class="analysis-icon">
+            </div>
+            <h3 class="card-title">Análisis de Glucosa</h3>
+          </div>
+
+          <div class="card-content">
+            <p class="card-description">
+              Analiza tus niveles de glucosa en sangre y recibe recomendaciones personalizadas
+              para mantener un control óptimo de tu salud metabólica.
+            </p>
+
+            <div class="card-features">
+              <div class="feature">
+                <span class="feature-check">✓</span>
+                <span>Análisis de niveles de glucosa</span>
+              </div>
+              <div class="feature">
+                <span class="feature-check">✓</span>
+                <span>Recomendaciones dietéticas</span>
+              </div>
+              <div class="feature">
+                <span class="feature-check">✓</span>
+                <span>Alertas de salud</span>
+              </div>
+              <div class="feature">
+                <span class="feature-check">✓</span>
+                <span>Consejos de ejercicio</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <button
+              class="analysis-btn blood-sugar-btn"
+              (click)="navigateToBloodSugar()">
+              <span class="btn-icon">🩸</span>
+              <span class="btn-text">Analizar Glucosa</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Blood Pressure Analysis Card -->
+        <div class="analysis-card blood-pressure-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <img src="assets/images/pressure-icon.svg" alt="Presión" class="analysis-icon">
+            </div>
+            <h3 class="card-title">Análisis de Presión Arterial</h3>
+          </div>
+
+          <div class="card-content">
+            <p class="card-description">
+              Evalúa tus niveles de presión arterial y obtén información detallada
+              sobre tu salud cardiovascular con recomendaciones específicas.
+            </p>
+
+            <div class="card-features">
+              <div class="feature">
+                <span class="feature-check">✓</span>
+                <span>Evaluación de presión arterial</span>
+              </div>
+              <div class="feature">
+                <span class="feature-check">✓</span>
+                <span>Análisis cardiovascular</span>
+              </div>
+              <div class="feature">
+                <span class="feature-check">✓</span>
+                <span>Factores de riesgo</span>
+              </div>
+              <div class="feature">
+                <span class="feature-check">✓</span>
+                <span>Estilo de vida saludable</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <button
+              class="analysis-btn blood-pressure-btn"
+              (click)="navigateToBloodPressure()">
+              <span class="btn-icon">💓</span>
+              <span class="btn-text">Analizar Presión</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Información Importante</h4>
+        <p>
+          Estas herramientas proporcionan información educativa únicamente.
+          No reemplazan el consejo médico profesional.
+        </p>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <p>Para consultas médicas, siempre consulte con un profesional de la salud en <a href="https://holadoc.com">HolaDoc</a>.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Centro de Análisis de Salud. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</div>

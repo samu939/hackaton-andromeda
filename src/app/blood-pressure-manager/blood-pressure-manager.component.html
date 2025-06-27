@@ -1,0 +1,19 @@
+<app-navigation></app-navigation>
+<div class="blood-sugar-analysis bs-container">
+  <div class="root">
+
+    <app-blood-pressure-input
+      *ngIf="!recommendations"
+      (newReading)="onNewReading($event)"
+    >
+    </app-blood-pressure-input>
+
+    <app-recommendations-display
+      *ngIf="recommendations"
+      [data]="recommendations"
+      (reset)="resetForm()"
+    >
+    </app-recommendations-display>
+  </div>
+
+</div>

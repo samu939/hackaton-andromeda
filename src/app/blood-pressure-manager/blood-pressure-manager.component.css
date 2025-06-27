@@ -1,0 +1,45 @@
+
+.blood-sugar-analysis {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+}
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); /* Nuevo fondo degradado */
+  font-family: 'Lato', sans-serif;
+  padding: 20px;
+}
+
+.main-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: #22223b; /* Fondo oscuro para el manager */
+  color: #f8f8f2; /* Texto claro */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.header {
+  background-color: #4a4e69; /* Azul oscuro */
+  color: #f8f8f2;
+  padding: 20px;
+  text-align: center;
+}
+
+.header .logo {
+  max-width: 150px;
+  margin-bottom: 10px;
+}
+
+.footer {
+  background-color: #22223b;
+  color: #bfc0c0;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9em;
+}

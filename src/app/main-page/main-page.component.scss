@@ -1,0 +1,411 @@
+// Main Page Styles
+:root {
+  --primary-dark: #080147;
+  --primary-red: #cc252d;
+  --primary-medium: #475c94;
+  --primary-white: #ffffff;
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+  --success: #27ae60;
+  --warning: #f39c12;
+  --shadow: rgba(8, 1, 71, 0.1);
+  --shadow-hover: rgba(8, 1, 71, 0.2);
+}
+
+.main-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+// Hero Section
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+  color: var(--primary-white);
+  padding: 0px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo-container {
+    margin-bottom: 24px;
+
+    .main-logo {
+      width: 280px;
+    }
+  }
+
+  .hero-title {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 20px;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+
+  .hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 500;
+
+      .feature-icon {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+// Main Content
+.main-content {
+  padding: 10px 20px;
+
+  .content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .section-description {
+    font-size: 18px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+}
+
+// Analysis Options
+.analysis-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.analysis-card {
+  background: var(--primary-white);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px var(--shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #e1e8ed;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px var(--shadow-hover);
+  }
+
+  .card-header {
+    padding: 32px 32px 24px;
+    text-align: center;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+
+    .card-icon {
+      margin-bottom: 16px;
+
+      .analysis-icon {
+        width: 64px;
+        height: 64px;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+      }
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 0;
+    }
+  }
+
+  .card-content {
+    padding: 0 32px 24px;
+
+    .card-description {
+      font-size: 16px;
+      color: var(--text-dark);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .card-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .feature {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        color: var(--text-dark);
+
+        .feature-check {
+          color: var(--success);
+          font-weight: bold;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .card-footer {
+    padding: 24px 32px 32px;
+  }
+}
+
+// Analysis Buttons
+.analysis-btn {
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  .btn-icon {
+    font-size: 20px;
+  }
+
+  .btn-text {
+    flex: 1;
+    text-align: center;
+  }
+
+  .btn-arrow {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  &.blood-sugar-btn {
+    background: linear-gradient(135deg, var(--primary-medium), var(--primary-dark));
+    color: var(--primary-white);
+
+    &:hover {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(71, 92, 148, 0.3);
+    }
+  }
+
+  &.blood-pressure-btn {
+    background: linear-gradient(135deg, var(--primary-red), #a91e22);
+    color: var(--primary-white);
+
+    &:hover {
+      background: linear-gradient(135deg, #a91e22, var(--primary-red));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(204, 37, 45, 0.3);
+    }
+  }
+}
+
+// Card Specific Styles
+.blood-sugar-card {
+  .card-header {
+    background: linear-gradient(135deg, rgba(71, 92, 148, 0.1), rgba(8, 1, 71, 0.05));
+  }
+
+  .analysis-icon {
+    filter: drop-shadow(0 4px 8px rgba(71, 92, 148, 0.2));
+  }
+}
+
+.blood-pressure-card {
+  .card-header {
+    background: linear-gradient(135deg, rgba(204, 37, 45, 0.1), rgba(169, 30, 34, 0.05));
+  }
+
+  .analysis-icon {
+    filter: drop-shadow(0 4px 8px rgba(204, 37, 45, 0.2));
+  }
+}
+
+// Footer
+.main-footer {
+  background: var(--primary-dark);
+  color: var(--primary-white);
+  padding: 40px 20px 20px;
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 32px;
+
+    .footer-section {
+      h4 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--primary-white);
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.6;
+        opacity: 0.9;
+        margin: 0;
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    p {
+      font-size: 14px;
+      opacity: 0.8;
+      margin: 0;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 16px;
+
+    .hero-title {
+      font-size: 32px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+    }
+
+    .hero-features {
+      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .main-content {
+    padding: 60px 16px;
+
+    .section-title {
+      font-size: 28px;
+    }
+
+    .section-description {
+      font-size: 16px;
+    }
+  }
+
+  .analysis-options {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .analysis-card {
+    .card-header,
+    .card-content,
+    .card-footer {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  .main-footer {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 40px 16px;
+
+    .hero-title {
+      font-size: 28px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+    }
+  }
+
+  .analysis-card {
+    .card-header,
+    .card-content,
+    .card-footer {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .card-header {
+      padding-top: 24px;
+    }
+
+    .card-footer {
+      padding-bottom: 24px;
+    }
+  }
+}

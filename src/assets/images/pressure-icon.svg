@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <circle cx="50" cy="50" r="40" fill="#ffebee" stroke="#cc252d" stroke-width="3"/>
+  <path d="M30 50 C35 40, 45 40, 50 50 C55 60, 65 60, 70 50" stroke="#cc252d" stroke-width="4" fill="none"/>
+  <path d="M25 50 C30 35, 40 35, 50 50 C60 65, 70 65, 75 50" stroke="#cc252d" stroke-width="2" fill="none" opacity="0.6"/>
+  <circle cx="50" cy="50" r="6" fill="#cc252d"/>
+  <path d="M42 42 L58 58 M58 42 L42 58" stroke="white" stroke-width="2"/>
+  <text x="50" y="85" text-anchor="middle" font-family="Arial" font-size="12" fill="#cc252d">mmHg</text>
+  <rect x="15" y="45" width="8" height="10" fill="#080147" rx="2"/>
+  <path d="M19 40 L19 35 M16 37 L22 37" stroke="#080147" stroke-width="1.5"/>
+</svg>

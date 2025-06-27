@@ -1,0 +1,20 @@
+<div class="input-container">
+  <h2>Ingresa tu presión arterial</h2>
+  <p>Es un paso rápido para cuidar de ti. Estamos para ayudarte.</p>
+  
+  <form [formGroup]="pressureForm" (ngSubmit)="onSubmit()" class="pressure-form">
+    <div class="form-group">
+      <label for="systolic">Sistólica (Alta)</label>
+      <input id="systolic" type="number" formControlName="systolic" placeholder="Ej: 120">
+    </div>
+
+    <div class="form-group">
+      <label for="diastolic">Diastólica (Baja)</label>
+      <input id="diastolic" type="number" formControlName="diastolic" placeholder="Ej: 80">
+    </div>
+
+    <button type="submit" [disabled]="pressureForm.invalid" class="submit-button">
+      Obtener mis recomendaciones
+    </button>
+  </form>
+</div>

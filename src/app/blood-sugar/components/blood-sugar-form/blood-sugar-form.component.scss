@@ -1,0 +1,387 @@
+@import '../../styles/blood-sugar-theme.scss';
+
+.form-title {
+  color: var(--bs-primary-dark);
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.form-subtitle {
+  color: var(--bs-text-light);
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.bs-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-section {
+  margin-bottom: 32px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.section-title {
+  color: var(--bs-primary-dark);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--bs-primary-medium);
+  display: flex;
+  align-items: center;
+
+  &:before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--bs-primary-medium);
+    margin-right: 12px;
+    border-radius: 2px;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.input-group {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+
+  .bs-form-control {
+    flex: 1;
+  }
+
+  .unit-select {
+    flex: 0 0 80px;
+    min-width: 80px;
+  }
+
+  .unit-label {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    background: #e9ecef;
+    border: 2px solid #e1e8ed;
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    color: var(--bs-text-dark);
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+.height-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .unit-select {
+    margin-bottom: 8px;
+  }
+
+  .input-group {
+    gap: 8px;
+  }
+}
+
+.dropdown-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+  appearance: none;
+  cursor: pointer;
+
+  &:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23475c94' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  }
+}
+
+// Selected chips/bubbles styles
+.selected-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--bs-primary-medium), var(--bs-primary-dark));
+  color: var(--bs-primary-white);
+  padding: 6px 8px 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(71, 92, 148, 0.2);
+  transition: all 0.2s ease;
+  animation: chipSlideIn 0.3s ease-out;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(71, 92, 148, 0.3);
+  }
+
+  .chip-text {
+    margin-right: 6px;
+    line-height: 1.2;
+  }
+
+  .chip-remove {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--bs-primary-white);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    transition: all 0.2s ease;
+    margin-left: 4px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:focus {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 1px;
+    }
+  }
+}
+
+@keyframes chipSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e9ecef;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .bs-btn {
+      width: 100%;
+    }
+  }
+}
+
+// Enhanced form control styles
+.bs-form-control {
+  transition: all 0.3s ease;
+  font-size: 14px;
+
+  &:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(71, 92, 148, 0.15);
+  }
+
+  &.error {
+    animation: shake 0.5s ease-in-out;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+// Custom checkbox/radio styles (if needed in future)
+.bs-checkbox,
+.bs-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--bs-primary-medium);
+  }
+
+  label {
+    margin: 0;
+    cursor: pointer;
+    font-weight: 400;
+  }
+}
+
+// Loading state for form
+.bs-form.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+// Success state indicators
+.field-success {
+  .bs-form-control {
+    border-color: var(--bs-success);
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+    }
+  }
+}
+
+// Improved accessibility
+.bs-form-control:focus {
+  outline: 2px solid var(--bs-primary-medium);
+  outline-offset: 2px;
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .bs-form-control {
+    border-width: 3px;
+  }
+
+  .section-title {
+    border-bottom-width: 3px;
+  }
+}
+
+// Empty state for chips
+.selected-chips:empty {
+  display: none;
+}
+
+// Chip variants for different types
+.chip {
+  &.medical-condition {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+  }
+
+  &.medication {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+  }
+
+  &.symptom {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+  }
+}
+
+// Improved focus states for accessibility
+.dropdown-select:focus {
+  outline: 2px solid var(--bs-primary-medium);
+  outline-offset: 2px;
+}
+
+// Loading state for dropdowns
+.dropdown-select:disabled {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+// Responsive improvements for chips
+@media (max-width: 768px) {
+  .selected-chips {
+    gap: 6px;
+  }
+
+  .chip {
+    font-size: 12px;
+    padding: 4px 6px 4px 10px;
+
+    .chip-remove {
+      width: 18px;
+      height: 18px;
+      font-size: 12px;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .bs-form-control,
+  .form-section,
+  .chip {
+    transition: none;
+    animation: none;
+  }
+
+  .bs-form-control.error {
+    animation: none;
+  }
+
+  .chip {
+    animation: none;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .chip {
+    border: 2px solid var(--bs-primary-white);
+  }
+
+  .dropdown-select {
+    border-width: 3px;
+  }
+}
+
+// .bs-form-group {
+//   max-width: 300px;
+// }
+
+.bs-error-message{
+  color: "red !important";
+  font-size: 12px;
+  margin-top: 4px;
+}

@@ -1,0 +1,34 @@
+<div class="results-container">
+  <div class="reading-display">
+    <p>Tu lectura:</p>
+    <span class="systolic">{{ data.systolic }}</span>
+    <span class="separator">/</span>
+    <span class="diastolic">{{ data.diastolic }}</span>
+    <span class="unit">mmHg</span>
+  </div>
+
+  <div class="gemini-response">
+    <h3>Recomendaciones de tu Asistente de IA</h3>
+    <p class="interpretation">{{ data.interpretation }}</p>
+    
+    <ul class="recommendation-list">
+      <li *ngFor="let item of data.recommendations">
+        <span class="icon">{{ item.icon }}</span>
+        <span class="text">{{ item.text }}</span>
+      </li>
+    </ul>
+
+    <div class="contact-section">
+      <p>{{ data.contact }} 
+        <a href="https://www.holadoc.com" target="_blank">{{ data.contactLinkText }}</a>.
+      </p>
+    </div>
+
+    <p class="closing-message">{{ data.closingMessage }}</p>
+  </div>
+
+  <div class="actions">
+    <button class="action-button print" (click)="print()">🖨️ Imprimir</button>
+    <button class="action-button reset" (click)="reset.emit()">Ingresar nueva lectura</button>
+  </div>
+</div>

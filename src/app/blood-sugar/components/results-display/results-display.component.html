@@ -1,0 +1,141 @@
+<div class="results-container">
+  <!-- Header Section -->
+  <div class="bs-card bs-card-primary results-header">
+    <div class="header-content">
+      <h2 class="results-title">
+        {{ levelIcon }} Análisis de Glucosa Completado
+      </h2>
+      <p class="results-subtitle">
+        Resultados basados en sus datos de salud
+      </p>
+    </div>
+  </div>
+
+  <!-- User Data Summary -->
+  <div class="bs-card user-summary">
+    <h3 class="summary-title">Resumen de Datos</h3>
+    <div class="user-data">
+      <div class="data-item">
+        <span class="data-label">Información Personal:</span>
+        <span class="data-value">{{ formatUserData() }}</span>
+      </div>
+      <div class="data-item">
+        <span class="data-label">Nivel de Glucosa:</span>
+        <span class="data-value glucose-level">
+          {{ userData.bloodSugarLevel }} mg/dL
+          <span class="range-indicator" [class]="getRangeColorClass()">
+            ({{ getBloodSugarRange() }})
+          </span>
+        </span>
+      </div>
+      <div class="data-item" *ngIf="userData.fastingHours">
+        <span class="data-label">Horas de Ayuno:</span>
+        <span class="data-value">{{ userData.fastingHours }} horas</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blood Sugar Level Analysis -->
+  <div class="bs-card bs-result-card level-analysis">
+    <div class="level-header">
+      <h3 class="analysis-title">Nivel de Glucosa</h3>
+      <div class="level-badge">
+        <span class="bs-level-indicator" [class]="levelColorClass">
+          {{ levelDisplayText }}
+        </span>
+      </div>
+    </div>
+    <p class="level-description">{{ levelDescription }}</p>
+  </div>
+
+  <!-- Recommendations Section -->
+  <div class="bs-card bs-result-card" *ngIf="analysis.recomendaciones && analysis.recomendaciones.length > 0">
+    <div class="bs-recommendations">
+      <h4>📋 Recomendaciones Personalizadas</h4>
+      <ul>
+        <li *ngFor="let recommendation of analysis.recomendaciones">
+          {{ recommendation }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Alerts Section -->
+  <div class="bs-card bs-result-card" *ngIf="analysis.alertas && analysis.alertas.length > 0">
+    <div class="bs-alerts">
+      <h4>🚨 Alertas Importantes</h4>
+      <div class="bs-alert" *ngFor="let alert of analysis.alertas">
+        {{ alert }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Motivational Message -->
+  <div class="bs-card bs-result-card" *ngIf="analysis.mensaje_motivacional">
+    <div class="bs-motivation">
+      <h4>💪 Mensaje Motivacional</h4>
+      <p>{{ analysis.mensaje_motivacional }}</p>
+    </div>
+  </div>
+
+  <!-- Additional Health Tips -->
+  <div class="bs-card health-tips">
+    <h4>💡 Consejos Generales de Salud</h4>
+    <div class="tips-grid">
+      <div class="tip-item">
+        <div class="tip-icon">🥗</div>
+        <div class="tip-content">
+          <h5>Alimentación</h5>
+          <p>Mantenga una dieta balanceada con carbohidratos complejos</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">🏃‍♂️</div>
+        <div class="tip-content">
+          <h5>Ejercicio</h5>
+          <p>Realice actividad física regular según su nivel de condición</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">📊</div>
+        <div class="tip-content">
+          <h5>Monitoreo</h5>
+          <p>Controle regularmente sus niveles de glucosa</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">👨‍⚕️</div>
+        <div class="tip-content">
+          <h5>Consulta Médica</h5>
+          <p>Mantenga seguimiento regular con su médico</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="results-actions">
+    <button
+      type="button"
+      class="bs-btn bs-btn-secondary"
+      (click)="onBackToForm()">
+      ← Nuevo Análisis
+    </button>
+
+    <button
+      type="button"
+      class="bs-btn bs-btn-primary"
+      (click)="onSaveResults()">
+      💾 Guardar Resultados
+    </button>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <p>
+      <strong>Importante:</strong> Esta información es solo para fines educativos y no reemplaza
+      el consejo médico profesional. Siempre puede consultar con un profesional de la salud en <a href="https://holadoc.com">HOLA DOC</a> par
+      obtener un diagnóstico y tratamiento adecuados.
+    </p>
+  </div>
+</div>

@@ -1,0 +1,143 @@
+
+<app-navigation></app-navigation>
+<div class="blood-sugar-analysis bs-container">
+  <!-- Header -->
+  <!-- Progress Indicator -->
+  <div class="progress-indicator">
+    <div class="progress-steps">
+      <div
+        class="step"
+        [class.active]="!isLoadingState && !isResultsState"
+        [class.completed]="isLoadingState || isResultsState"
+      >
+        <div class="step-number">1</div>
+        <div class="step-label">Datos Ingresados</div>
+      </div>
+      <div
+        class="step"
+        [class.active]="isLoadingState"
+        [class.completed]="isResultsState"
+      >
+        <div class="step-number">2</div>
+        <div class="step-label">Analizando</div>
+      </div>
+      <div class="step" [class.active]="isResultsState">
+        <div class="step-number">3</div>
+        <div class="step-label">Resultados</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Area -->
+  <main class="analysis-content">
+    <!-- Form State -->
+    <div *ngIf="isFormState" class="content-section">
+      <bs-blood-sugar-form (formSubmit)="onFormSubmit($event)">
+      </bs-blood-sugar-form>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoadingState" class="content-section">
+      <bs-loading
+        [message]="loadingState.message"
+        [subMessage]="'Esto puede tomar unos momentos...'"
+        [overlay]="false"
+      >
+      </bs-loading>
+
+      <!-- Loading Tips -->
+      <div class="loading-tips bs-card">
+        <h3>💡 Mientras espera...</h3>
+        <ul class="tips-list">
+          <li>
+            Los niveles normales de glucosa en ayunas están entre 70-99 mg/dL
+          </li>
+          <li>
+            El ejercicio regular ayuda a mantener niveles estables de glucosa
+          </li>
+          <li>Una dieta balanceada es clave para el control glucémico</li>
+          <li>El estrés puede afectar los niveles de azúcar en sangre</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Results State -->
+    <div *ngIf="canShowResults" class="content-section">
+      <bs-results-display
+        [analysis]="currentAnalysis!"
+        [userData]="currentUserData!"
+        (backToForm)="onBackToForm()"
+        (saveResults)="onSaveResults($event)"
+      >
+      </bs-results-display>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="isErrorState" class="content-section">
+      <div class="bs-card error-card">
+        <div class="error-content">
+          <div class="error-icon">⚠️</div>
+          <h3 class="error-title">Error en el Análisis</h3>
+          <p class="error-message">{{ errorMessage }}</p>
+          <div class="error-actions">
+            <button class="bs-btn bs-btn-primary" (click)="onRetryAnalysis()">
+              🔄 Reintentar Análisis
+            </button>
+            <button class="bs-btn bs-btn-secondary" (click)="onBackToForm()">
+              ← Volver al Formulario
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Error Modal -->
+  <bs-modal
+    [isOpen]="showErrorModal"
+    [title]="'Error en el Análisis'"
+    [showCloseButton]="true"
+    [showFooter]="true"
+    (closed)="closeErrorModal()"
+  >
+    <div class="modal-error-content">
+      <div class="modal-error-icon">⚠️</div>
+      <h4 class="modal-error-title">Error en el Análisis</h4>
+      <p class="modal-error-message">{{ errorMessage }}</p>
+      <div class="modal-error-suggestions">
+        <p><strong>Sugerencias:</strong></p>
+        <ul>
+          <li>Verifique su conexión a internet</li>
+          <li>Intente nuevamente en unos momentos</li>
+          <li>Use el modo demo si el problema persiste</li>
+        </ul>
+      </div>
+    </div>
+
+    <div slot="footer">
+      <button class="bs-btn bs-btn-secondary" (click)="closeErrorModal()">
+        Cerrar
+      </button>
+      <button class="bs-btn bs-btn-primary" (click)="onRetryAnalysis()">
+        Reintentar
+      </button>
+    </div>
+  </bs-modal>
+
+  <!-- Footer -->
+  <footer class="analysis-footer">
+    <div class="footer-content">
+      <p class="footer-disclaimer">
+        <strong>Aviso Médico:</strong> Esta herramienta proporciona información
+        educativa únicamente. No reemplaza el consejo médico profesional.
+        Siempre consulte con un profesional de la salud para obtener
+        diagnósticos y tratamientos médicos.
+      </p>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Términos de Uso</a>
+        <a href="#" class="footer-link">Política de Privacidad</a>
+        <a href="#" class="footer-link">Contacto</a>
+      </div>
+    </div>
+  </footer>
+</div>

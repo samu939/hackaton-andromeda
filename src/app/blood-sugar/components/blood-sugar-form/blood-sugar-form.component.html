@@ -1,0 +1,361 @@
+
+
+  <form [formGroup]="bloodSugarForm" (ngSubmit)="onSubmit()" class="bs-form">
+    <!-- Basic Information Section -->
+    <div class="form-section">
+      <h3 class="section-title">Información Básica</h3>
+
+      <div class="form-row">
+        <div class="bs-form-group" style="max-width: 90%">
+          <label for="age">Edad *</label>
+          <input
+            type="number"
+            id="age"
+            formControlName="age"
+            class="bs-form-control"
+            [class.error]="isFieldInvalid('age')"
+            placeholder="Ingrese su edad"
+            min="1"
+            max="120"
+          />
+          <span *ngIf="isFieldInvalid('age')">
+            <p style="color: red">{{ getFieldError("age") }}</p>
+          </span>
+        </div>
+
+        <div class="bs-form-group">
+          <label for="gender">Género *</label>
+          <select
+            id="gender"
+            formControlName="gender"
+            class="bs-form-control"
+            [class.error]="isFieldInvalid('gender')"
+          >
+            <option value="">Seleccione su género</option>
+            <option [value]="Gender.MALE">Masculino</option>
+            <option [value]="Gender.FEMALE">Femenino</option>
+            <option [value]="Gender.OTHER">Otro</option>
+          </select>
+          <span class="bs-error-message" *ngIf="isFieldInvalid('gender')">
+            <p style="color: red">{{ getFieldError("gender") }}</p>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="bs-form-group">
+          <label for="weight">Peso *</label>
+          <div class="input-group">
+            <input
+              type="number"
+              id="weight"
+              formControlName="weight"
+              class="bs-form-control"
+              [class.error]="isFieldInvalid('weight')"
+              placeholder="Peso"
+              min="1"
+              max="1000"
+              step="0.1"
+            />
+            <select
+              formControlName="weightUnit"
+              class="bs-form-control unit-select"
+            >
+              <option [value]="WeightUnit.KG">kg</option>
+              <option [value]="WeightUnit.LBS">lbs</option>
+            </select>
+          </div>
+          <span class="bs-error-message" *ngIf="isFieldInvalid('weight')">
+            <p style="color: red">{{ getFieldError("weight") }}</p>
+          </span>
+        </div>
+
+        <div class="bs-form-group">
+          <label>Altura *</label>
+          <div class="height-inputs">
+            <select
+              formControlName="heightUnit"
+              class="bs-form-control unit-select"
+            >
+              <option [value]="HeightUnit.CM">cm</option>
+              <option [value]="HeightUnit.FT_IN">ft-in</option>
+            </select>
+
+            <div *ngIf="isHeightInCm" class="input-group">
+              <input
+                type="number"
+                formControlName="height"
+                class="bs-form-control"
+                [class.error]="isFieldInvalid('height')"
+                placeholder="Altura en cm"
+                min="50"
+                max="300"
+              />
+            </div>
+
+            <div *ngIf="isHeightInFeetInches" class="input-group">
+              <input
+                type="number"
+                formControlName="heightFeet"
+                class="bs-form-control"
+                [class.error]="isFieldInvalid('heightFeet')"
+                placeholder="Pies"
+                min="3"
+                max="8"
+              />
+              <input
+                type="number"
+                formControlName="heightInches"
+                class="bs-form-control"
+                [class.error]="isFieldInvalid('heightInches')"
+                placeholder="Pulgadas"
+                min="0"
+                max="11"
+              />
+            </div>
+          </div>
+          <span
+            *ngIf="
+              isFieldInvalid('height') ||
+              isFieldInvalid('heightFeet') ||
+              isFieldInvalid('heightInches')
+            "
+          >
+            <p style="color: red">
+              {{
+                getFieldError("height") ||
+                  getFieldError("heightFeet") ||
+                  getFieldError("heightInches")
+              }}
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blood Sugar Information Section -->
+    <div class="form-section">
+      <h3 class="section-title">Información de Glucosa</h3>
+
+      <div class="form-row">
+        <div class="bs-form-group">
+          <label for="bloodSugarLevel">Nivel de Glucosa *</label>
+          <div class="input-group">
+            <input
+              type="number"
+              id="bloodSugarLevel"
+              formControlName="bloodSugarLevel"
+              class="bs-form-control"
+              [class.error]="isFieldInvalid('bloodSugarLevel')"
+              placeholder="Nivel de glucosa"
+              min="20"
+              max="800"
+              step="1"
+            />
+            <span class="unit-label">mg/dL</span>
+          </div>
+          <span class="bs-help-text">Ingrese su nivel de glucosa en mg/dL</span>
+          <span
+            class="bs-error-message"
+            *ngIf="isFieldInvalid('bloodSugarLevel')"
+          >
+            <p style="color: red">{{ getFieldError("bloodSugarLevel") }}</p>
+          </span>
+        </div>
+
+        <div class="bs-form-group" style="max-width: 90%">
+          <label for="fastingHours">Horas de Ayuno</label>
+          <input
+            type="number"
+            id="fastingHours"
+            formControlName="fastingHours"
+            class="bs-form-control"
+            placeholder="Horas desde la última comida"
+            min="0"
+            max="48"
+          />
+          <span class="bs-help-text"
+            >Opcional: Horas desde su última comida</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Lifestyle Information Section -->
+    <div class="form-section">
+      <h3 class="section-title">Estilo de Vida</h3>
+
+      <div class="bs-form-group">
+        <label for="activityLevel">Nivel de Actividad Física *</label>
+        <select
+          id="activityLevel"
+          formControlName="activityLevel"
+          class="bs-form-control"
+          [class.error]="isFieldInvalid('activityLevel')"
+        >
+          <option value="">Seleccione su nivel de actividad</option>
+          <option [value]="ActivityLevel.SEDENTARY">
+            Sedentario (poco o ningún ejercicio)
+          </option>
+          <option [value]="ActivityLevel.LIGHT">
+            Ligero (ejercicio ligero 1-3 días/semana)
+          </option>
+          <option [value]="ActivityLevel.MODERATE">
+            Moderado (ejercicio moderado 3-5 días/semana)
+          </option>
+          <option [value]="ActivityLevel.ACTIVE">
+            Activo (ejercicio intenso 6-7 días/semana)
+          </option>
+          <option [value]="ActivityLevel.VERY_ACTIVE">
+            Muy activo (ejercicio muy intenso, trabajo físico)
+          </option>
+        </select>
+        <span class="bs-error-message" *ngIf="isFieldInvalid('activityLevel')">
+          <p style="color: red">{{ getFieldError("activityLevel") }}</p>
+        </span>
+      </div>
+    </div>
+
+    <!-- Medical Information Section -->
+    <div class="form-section">
+      <h3 class="section-title">Información Médica</h3>
+
+      <div class="bs-form-group">
+        <label for="medicalConditions">Condiciones Médicas</label>
+        <select
+          id="medicalConditions"
+          class="bs-form-control dropdown-select"
+          (change)="onDropdownSelect($event, 'medicalConditions')"
+        >
+          <option value="">Seleccione una condición médica</option>
+          <option
+            *ngFor="let condition of medicalConditions"
+            [value]="condition"
+          >
+            {{ condition }}
+          </option>
+        </select>
+
+        <!-- Selected items as chips -->
+        <div
+          class="selected-chips"
+          *ngIf="getSelectedItems('medicalConditions').length > 0"
+        >
+          <div
+            class="chip"
+            *ngFor="let item of getSelectedItems('medicalConditions')"
+          >
+            <span class="chip-text">{{ item }}</span>
+            <button
+              type="button"
+              class="chip-remove"
+              (click)="removeSelectedItem(item, 'medicalConditions')"
+              [attr.aria-label]="'Eliminar ' + item"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+
+        <span class="bs-help-text"
+          >Seleccione las condiciones médicas que apliquen</span
+        >
+      </div>
+
+      <div class="bs-form-group">
+        <label for="medications">Medicamentos</label>
+        <select
+          id="medications"
+          class="bs-form-control dropdown-select"
+          (change)="onDropdownSelect($event, 'medications')"
+        >
+          <option value="">Seleccione un medicamento</option>
+          <option *ngFor="let medication of medications" [value]="medication">
+            {{ medication }}
+          </option>
+        </select>
+
+        <!-- Selected items as chips -->
+        <div
+          class="selected-chips"
+          *ngIf="getSelectedItems('medications').length > 0"
+        >
+          <div
+            class="chip"
+            *ngFor="let item of getSelectedItems('medications')"
+          >
+            <span class="chip-text">{{ item }}</span>
+            <button
+              type="button"
+              class="chip-remove"
+              (click)="removeSelectedItem(item, 'medications')"
+              [attr.aria-label]="'Eliminar ' + item"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+
+        <span class="bs-help-text"
+          >Seleccione los medicamentos que está tomando actualmente</span
+        >
+      </div>
+
+      <div class="bs-form-group">
+        <label for="symptoms">Síntomas Actuales</label>
+        <select
+          id="symptoms"
+          class="bs-form-control dropdown-select"
+          (change)="onDropdownSelect($event, 'symptoms')"
+        >
+          <option value="">Seleccione un síntoma</option>
+          <option *ngFor="let symptom of symptoms" [value]="symptom">
+            {{ symptom }}
+          </option>
+        </select>
+
+        <!-- Selected items as chips -->
+        <div
+          class="selected-chips"
+          *ngIf="getSelectedItems('symptoms').length > 0"
+        >
+          <div class="chip" *ngFor="let item of getSelectedItems('symptoms')">
+            <span class="chip-text">{{ item }}</span>
+            <button
+              type="button"
+              class="chip-remove"
+              (click)="removeSelectedItem(item, 'symptoms')"
+              [attr.aria-label]="'Eliminar ' + item"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+
+        <span class="bs-help-text"
+          >Seleccione los síntomas que está experimentando</span
+        >
+      </div>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <button
+        type="button"
+        class="bs-btn bs-btn-secondary"
+        (click)="resetForm()"
+        [disabled]="isSubmitting"
+      >
+        Limpiar Formulario
+      </button>
+
+      <button
+        type="submit"
+        class="bs-btn bs-btn-primary bs-btn-large"
+        [disabled]="bloodSugarForm.invalid || isSubmitting"
+      >
+        <span *ngIf="!isSubmitting">Analizar Glucosa</span>
+        <span *ngIf="isSubmitting">Analizando...</span>
+      </button>
+    </div>
+  </form>
